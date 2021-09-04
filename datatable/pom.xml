@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.plugin</groupId>
+  	<artifactId>datatable</artifactId>
+  	<version>1.0</version>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
+			<!-- Webjar https://www.webjars.org/documentation#springmvc -->
+			<dependency>
+			    <groupId>org.webjars</groupId>
+			    <artifactId>jquery</artifactId>
+			    <version>${jquery.version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/org.webjars/jquery-ui -->
+			<dependency>
+			    <groupId>org.webjars</groupId>
+			    <artifactId>jquery-ui</artifactId>
+			    <version>${jquery-ui.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.zcore.maven</groupId>
+		      	<artifactId>merge-maven-plugin</artifactId>
+		      	<version>0.0.3</version>
+		    </dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+	
+  <build>
+		<directory>${project.basedir}/target</directory>
+    	<outputDirectory>${project.build.directory}</outputDirectory>
+    	<resources>
+    		<resource>
+    			<targetPath>META-INF</targetPath>
+    			<directory>src/main/resources/META-INF</directory>
+    		</resource>
+    		<resource>
+    			<targetPath>META-INF/resources/webjars/plugin/datatable/</targetPath>
+    			<directory>src/main/resources/css</directory>
+    		</resource>
+    	</resources>
+    	
+    	<pluginManagement>
+  			<plugins>
+    			<plugin>
+     				<groupId>org.eclipse.m2e</groupId>
+     				<artifactId>lifecycle-mapping</artifactId>
+     				<version>1.0.0</version>
+     				<configuration>
+       					<lifecycleMappingMetadata>
+         					<pluginExecutions>
+           						<pluginExecution>
+             						<pluginExecutionFilter>
+        								<groupId>org.zcore.maven</groupId>
+        								<artifactId>merge-maven-plugin</artifactId>
+        								<versionRange>0.0.3</versionRange>
+               							<goals>
+                 							<goal>merge</goal>
+               							</goals>
+             						</pluginExecutionFilter>
+             						<action>
+               							<ignore/>
+             						</action>
+           						</pluginExecution>
+         					</pluginExecutions>
+       					</lifecycleMappingMetadata>
+     				</configuration>
+    			</plugin>
+  			</plugins>
+		</pluginManagement>
+    	
+    	<plugins>
+			<plugin>
+        		<groupId>org.zcore.maven</groupId>
+        		<artifactId>merge-maven-plugin</artifactId>
+        		<version>0.0.3</version>
+        		<executions>
+          			<execution>
+            			<id>merge</id>
+            			<phase>compile</phase>
+            			<goals>
+              				<goal>merge</goal>
+            			</goals>
+            			<configuration>
+              				<mergers>
+                				<merger>
+                  					<target>target/META-INF/resources/webjars/plugin/datatable/plugin.js</target>
+                  					<sources>
+                    					<source>src/main/resources/js/element/datatable.js</source>
+                    					<source>src/main/resources/js/P_datatable.js</source>
+                  					</sources>
+                				</merger>
+              				</mergers>
+            			</configuration>
+          			</execution>
+        		</executions>
+      		</plugin>
+  		</plugins>
+  </build>
+	
+</project>

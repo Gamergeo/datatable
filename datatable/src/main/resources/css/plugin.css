@@ -1,0 +1,41 @@
+.plugin_datatable_datatable {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.plugin_datatable_line {
+	display: flex;
+	width: 100%;
+}
+
+.plugin_datatable_headercell {
+	font-weight: bold;
+}
+
+.plugin_datatable_cell {
+	text-align: left;
+	width: -webkit-fill-available;
+}
+
+.plugin_datatable_line:nth-child(2n+1) {
+	background-color: grey; 
+}
+
+.plugin_datatable_line:nth-child(2n) {
+	background-color: white; 
+}
+
+.plugin_datatable_sortable {
+	cursor: pointer;
+}
+
+.plugin_datatable_container {
+	display: flex;
+	flex-direction : column;
+}
+
+.plugin_datatable_search {
+	width: 100px;
+	align-self: flex-end;
+}
