@@ -12,6 +12,18 @@ class P_datatable {
 		return line.find('.plugin_datatable_cell').eq(index - 1);
 	}
 	
+	static getCellValue(line, index) {
+		
+		let cell = P_datatable.getCell(line, index);
+		let cellValue = cell.textOrVal().trim();
+		
+		if ($.isEmptyObject(cellValue)) {
+			cellValue = cell.children().eq(0).textOrVal();
+		}
+		
+		return cellValue;
+	}
+	
 	static addCssClasses(datatable) {
 		datatable.addClass("plugin_datatable_datatable");
 		let firstLine = true;
@@ -98,10 +110,8 @@ class P_datatable {
 	 */ 
 	static comparer(index) {
 	    return function(a, b) {
-			let cellA = P_datatable.getCell($(a), index);
-	        let valA = cellA.textOrVal(); 
-			let cellB = P_datatable.getCell($(b), index);
-	        let valB = cellB.textOrVal(); 
+	        let valA = P_datatable.getCellValue($(a), index);
+	        let valB = P_datatable.getCellValue($(b), index);
 	        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
 	    }
 	}
@@ -122,7 +132,6 @@ class P_datatable {
 		container.append(searchInput);
 		container.appendTo(datatable.parent());
 		datatable.appendTo(container);
-		
 	}
 	
 	/*
@@ -133,7 +142,7 @@ class P_datatable {
 		P_datatable.getLines(datatable).each(function() {
 			
 			let line = $(this);
-			let cellValue = P_datatable.getCell(line, searchIndex).textOrVal();
+			let cellValue = P_datatable.getCellValue(line, searchIndex);
 			
 			if (!text || cellValue.toUpperCase().indexOf(text.toUpperCase()) != -1) {
 				line.show();

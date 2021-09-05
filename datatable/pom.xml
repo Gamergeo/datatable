@@ -93,6 +93,7 @@
                     					<source>src/main/resources/js/element/datatable.js</source>
                     					<source>src/main/resources/js/element/closestLine.js</source>
                     					<source>src/main/resources/js/element/loadLine.js</source>
+                    					<source>src/main/resources/js/element/addLine.js</source>
                     					<source>src/main/resources/js/P_datatable.js</source>
                   					</sources>
                 				</merger>
