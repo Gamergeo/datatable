@@ -19,35 +19,45 @@ class P_datatable {
 		// Iteration sur les lignes
 		datatable.closestChildren("div").each(function() {
 			let line = $(this);
-			
-			// Header
-			if (firstLine) {
-				line.addClass("plugin_datatable_header");
-			}
-			
-			line.addClass("plugin_datatable_line");
-			
-			// Iteration sur les cellules
-			line.closestChildren("div").each(function() {
-				let cell = $(this);
-				
-				// Header
-				if (firstLine) {
-					cell.addClass("plugin_datatable_headercell");
-				}
-				
-				cell.addClass("plugin_datatable_cell")
-			});
-			
+			P_datatable.addLineCssClasses(line, firstLine);
+
 			if (firstLine) {
 				firstLine = false;
 			}
 		});
 	}
 	
+	// Ajoute les classes pour la ligne selectionné
+	static addLineCssClasses(line, firstLine) {
+		
+		// Header
+		if (firstLine) {
+			line.addClass("plugin_datatable_header");
+		}
+		
+		line.addClass("plugin_datatable_line");
+		
+		// Iteration sur les cellules
+		line.closestChildren("div").each(function() {
+			let cell = $(this);
+			
+			// Header
+			if (firstLine) {
+				cell.addClass("plugin_datatable_headercell");
+			}
+			
+			cell.addClass("plugin_datatable_cell")
+		});
+	}
+	
 	static addSort(datatable, columnIndex) {
 		
 		let sortableColumn = datatable.find('.plugin_datatable_headercell').eq(columnIndex - 1);
+		
+		// Si la colonne comprends plusieurs elements, le dernier est utilisé
+		if (sortableColumn.children().length) {
+			sortableColumn = sortableColumn.children().last();
+		}
 
 		sortableColumn.addClass('plugin_datatable_sortable');
 		sortableColumn.data("plugin_datatable_sort_order", 0);
@@ -113,7 +123,6 @@ class P_datatable {
 		container.appendTo(datatable.parent());
 		datatable.appendTo(container);
 		
-//		datatable.css("width", "100%");
 	}
 	
 	/*

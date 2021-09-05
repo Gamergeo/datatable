@@ -91,6 +91,8 @@
                   					<target>target/META-INF/resources/webjars/plugin/datatable/plugin.js</target>
                   					<sources>
                     					<source>src/main/resources/js/element/datatable.js</source>
+                    					<source>src/main/resources/js/element/closestLine.js</source>
+                    					<source>src/main/resources/js/element/loadLine.js</source>
                     					<source>src/main/resources/js/P_datatable.js</source>
                   					</sources>
                 				</merger>
