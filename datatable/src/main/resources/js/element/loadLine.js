@@ -13,7 +13,11 @@ $.fn.loadLine = function (url, data, oncomplete) {
 		let lineRefresh = () => {
 			P_datatable.addLineCssClasses(line, isHeader);
 		}
-		
-		line.load(url,  data, $.mergeFunction(oncomplete, lineRefresh));
+			
+		line.postHtml({
+			'url': url, 
+			'data': data,
+			'success': $.mergeFunction(lineRefresh, oncomplete)
+		});
 	});
 }

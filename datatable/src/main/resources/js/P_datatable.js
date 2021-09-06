@@ -172,6 +172,9 @@ class P_datatable {
 	static addContainer(datatable) {
 		let container = $("<div></div>");			
 		container.addClass("plugin_datatable_container");
+//		container.width(datatable.percentageWidth() + '%');
+//		
+//		datatable.width('100%');
 		
 		let preTable = $("<div></div>");
 		preTable.addClass("plugin_datatable_pretable");		
