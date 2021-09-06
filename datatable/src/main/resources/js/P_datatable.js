@@ -210,6 +210,9 @@ class P_datatable {
 		let option50 = $("<option value='50'>50</option>");
 		paginationSelect.append(option50);
 		
+		let option100 = $("<option value='100'>100</option>");
+		paginationSelect.append(option100);
+		
 		// Lorsqu'il change, il faut remettre à jour la pagination
 		paginationSelect.change(() => {
 			
