@@ -42,6 +42,10 @@
     			<targetPath>META-INF/resources/webjars/plugin/datatable/</targetPath>
     			<directory>src/main/resources/css</directory>
     		</resource>
+    		<resource>
+    			<targetPath>META-INF/resources/webjars/plugin/datatable/images</targetPath>
+    			<directory>src/main/resources/images</directory>
+    		</resource>
     	</resources>
     	
     	<pluginManagement>

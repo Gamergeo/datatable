@@ -3,6 +3,7 @@ Data table plugin
 options {
 	searchColumn : index of searched column if any
 	sortColumns : index of sortable column, if any
+	pagination : nombre de page initial de la pagination. Si non rempli, pas de pagination
 
 
 }

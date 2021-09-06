@@ -32,10 +32,60 @@
 
 .plugin_datatable_container {
 	display: flex;
-	flex-direction : column;
+	flex-direction: column;
+}
+
+.plugin_datatable_pretable {
+	display: flex;
+}
+
+.plugin_datatable_pagination_select {
+	width: 50px;
 }
 
 .plugin_datatable_search {
 	width: 100px;
-	align-self: flex-end;
+	margin-left: auto;
+}
+
+.plugin_datatable_posttable {
+	display: flex;
+	margin-left : auto;
+}
+
+/* Container de taille fixe */
+.plugin_datatable_posttable > div  {
+	width: 20px;
+}
+
+.plugin_datatable_posttable > div > div {
+	height: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.plugin_datatable_posttable > div > div:hover {
+	background-color: grey;
+}
+
+.plugin_datatable_pagination_button_first {
+	background-image: url("images/double_previous.png");
+}
+
+.plugin_datatable_pagination_button_previous {
+	background-image: url("images/previous.png");
+}
+
+.plugin_datatable_pagination_button_next {
+	background-image: url("images/next.png");
+}
+
+.plugin_datatable_pagination_button_last {
+	background-image: url("images/double_next.png");
+}
+
+.plugin_datatable_pagination_input {
+	width: 30px;
+	text-align:center;
 }

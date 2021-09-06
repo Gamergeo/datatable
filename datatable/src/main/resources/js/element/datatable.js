@@ -14,8 +14,15 @@ $.fn.datatable = function (options) {
 			}
 		}
 		
+		P_datatable.addContainer(datatable);
+		
 		if (options.searchColumn) {
 			P_datatable.addSearch(datatable, options.searchColumn);
 		}
+		
+		if (options.pagination) {
+			P_datatable.addPagination(datatable);
+		}
+		
 	});
 }
