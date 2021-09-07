@@ -14,7 +14,17 @@ $.fn.datatable = function (options) {
 			
 			if (!$.isEmptyObject(options.sortColumns)) {
 				for (let i = 0; i < options.sortColumns.length; i++) {
-					P_datatable.addSort(datatable, options.sortColumns[i]);
+					
+					let dateSort = false;
+					let sortColumn = options.sortColumns[i]; 
+					
+					// Si l'utilisateur spécifie que ce sont des dates, alors le sort est différent
+					if (!$.isNumeric(sortColumn) && sortColumn.includes("date")) {
+						dateSort = true;
+						sortColumn = sortColumn.replace('date', '').trim();
+					}
+					
+					P_datatable.addSort(datatable, sortColumn, dateSort);
 				}
 			}
 			

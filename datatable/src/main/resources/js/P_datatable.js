@@ -75,7 +75,7 @@ class P_datatable {
 		});
 	}
 	
-	static addSort(datatable, columnIndex) {
+	static addSort(datatable, columnIndex, dateSort) {
 		
 		let sortableColumn = datatable.find('.plugin_datatable_headercell').eq(columnIndex - 1);
 		
@@ -92,12 +92,12 @@ class P_datatable {
 			
 			// Aucun tri (ou descendant) -> tri ascendant
 			if (sortOrder == 0) { 
-				P_datatable.sort(datatable, columnIndex, true);
+				P_datatable.sort(datatable, columnIndex, true, dateSort);
 				sortOrder = 1;
 			
 			// tri ascendant -> descendant
 			} else if (sortOrder == 1) { 
-				P_datatable.sort(datatable, columnIndex, false);
+				P_datatable.sort(datatable, columnIndex, false, dateSort);
 				sortOrder = 0;
 			}
 			
@@ -105,9 +105,9 @@ class P_datatable {
 		});
 	}
 	
-	static sort(datatable, idCol, ascendant) {
+	static sort(datatable, idCol, ascendant, dateSort) {
 		let lineArray = P_datatable.getLines(datatable).toArray();
-		var sortedArray = lineArray.sort(P_datatable.comparer(idCol));
+		var sortedArray = lineArray.sort(P_datatable.comparer(idCol, dateSort));
 		
 		if (!ascendant) {
 			sortedArray = sortedArray.reverse();
@@ -123,10 +123,19 @@ class P_datatable {
 	/**
 	 * Comparer for sorting table
 	 */ 
-	static comparer(index) {
+	static comparer(index, dateSort) {
 	    return function(a, b) {
+		
 	        let valA = P_datatable.getCellValue($(a), index);
 	        let valB = P_datatable.getCellValue($(b), index);
+
+			if (dateSort) {
+				let dateA = $.parseDate(valA);
+				let dateB = $.parseDate(valB);
+				
+				return dateA - dateB;
+			}
+		
 	        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
 	    }
 	}
