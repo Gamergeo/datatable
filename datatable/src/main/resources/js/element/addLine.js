@@ -9,10 +9,6 @@ $.fn.addLine = function (url, data, oncomplete) {
 		let headerLine = $(this).closest(".plugin_datatable_datatable").find(".plugin_datatable_header");
 		newLine.addClass('plugin_datatable_line');
 		
-		data = {
-			'id' : '',
-		};
-
 		newLine.insertAfter(headerLine);
 		newLine.loadLine(url,  data, oncomplete);
 	});
