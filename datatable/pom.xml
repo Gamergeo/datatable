@@ -98,6 +98,11 @@
                     					<source>src/main/resources/js/element/closestLine.js</source>
                     					<source>src/main/resources/js/element/loadLine.js</source>
                     					<source>src/main/resources/js/element/addLine.js</source>
+                    					<source>src/main/resources/js/element/cancelLine.js</source>
+                    					<source>src/main/resources/js/element/deleteLine.js</source>
+                    					<source>src/main/resources/js/element/loadEditLine.js</source>
+                    					<source>src/main/resources/js/element/loadViewLine.js</source>
+                    					<source>src/main/resources/js/element/saveLine.js</source>
                     					<source>src/main/resources/js/P_datatable.js</source>
                   					</sources>
                 				</merger>
